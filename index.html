@@ -22,17 +22,16 @@
     .inner{width:100%;max-width:var(--max);margin:auto;}
 
     /* HERO */
-    #home{background:var(--bg);justify-content:center;position:relative;}
-    .hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem;}
-    .hero-logo{width:100%;max-width:45vw;min-width:380px;pointer-events:none;}
-    .hero-img{width:100%;max-width:400px;height:auto;object-fit:contain;pointer-events:none;} /* back to modest size */
+    #home{background:var(--bg);justify-content:center;text-align:center;}
+    .hero-wrapper{display:flex;justify-content:center;align-items:center;width:100%;}
+    .hero-img{width:100%;max-width:350px;height:auto;object-fit:contain;pointer-events:none;}
     .sponsor{position:absolute;left:1.5rem;bottom:1.5rem;font-size:1.2rem;text-shadow:0 0 8px #fff;pointer-events:none;}
 
     /* ABOUT */
     #about{background:#3b000b linear-gradient(135deg,#3b000b 0%,#0a0004 80%);}  
     .about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem;}
     .about-grid h2{font-size:3.2rem;font-weight:800;margin-bottom:1rem;}
-    .about-img{width:100%;max-width:350px;height:auto;object-fit:contain;pointer-events:none;} /* smaller avatar */
+    .about-img{width:100%;max-width:350px;height:auto;object-fit:contain;pointer-events:none;}
     .social{display:flex;gap:1rem;margin-top:1.5rem;align-items:center;}
     .social img{width:36px;height:36px;object-fit:contain;filter:invert(100%);transition:.3s;display:block;}
     .social img:hover{transform:translateY(-4px);}  
@@ -48,7 +47,7 @@
 
     footer{background:#000;text-align:center;padding:1.5rem;font-size:.85rem;color:#888;pointer-events:none;}
 
-    @media(max-width:960px){.hero-grid,.about-grid{grid-template-columns:1fr;text-align:center;}.hero-img{max-width:300px;margin:0 auto;}.hero-logo{max-width:80vw;}.about-img{max-width:300px;margin:0 auto;}}
+    @media(max-width:960px){.about-grid{grid-template-columns:1fr;text-align:center;}.about-img{max-width:300px;margin:0 auto;}}
     @media(max-width:768px){ul.nav-links{display:none;}section{padding:4rem 1.5rem;}}
   </style>
   <script>document.addEventListener('contextmenu',e=>e.preventDefault());['copy','cut','paste','dragstart'].forEach(evt=>document.addEventListener(evt,e=>e.preventDefault()));document.addEventListener('keydown',e=>{if(e.ctrlKey&&['s','u','p','c'].includes(e.key.toLowerCase()))e.preventDefault();if(e.key==='PrintScreen'){alert('Screenshot disabled ❌');e.preventDefault();}});</script>
@@ -56,7 +55,12 @@
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
   <header><nav><div class="logo"><img src="assets/logo.png" alt="Inferno logo" /><span>Inferno</span></div><ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#product">Product</a></li></ul></nav></header>
 
-  <section id="home"><div class="inner hero-grid"><img src="assets/inferno-text-logo.png" alt="Inferno Studios" class="hero-logo" /><img src="assets/avatar.png" alt="Inferno Avatar" class="hero-img" /></div><span class="sponsor">Sponsor by vyn</span></section>
+  <section id="home">
+    <div class="inner hero-wrapper">
+      <img src="assets/avatar.png" alt="Inferno Avatar" class="hero-img" />
+    </div>
+    <span class="sponsor">Sponsor by vyn</span>
+  </section>
 
   <section id="about"><div class="inner about-grid"><div><h2>About :</h2><p>Berfokus pada game Roblox bidang Roblox Studio, Inferno Studios mengembangkan sistem terbaik dengan harga terjangkau sekaligus memastikan performa optimal di perangkat mobile/tablet.</p><div class="social"><a href="https://www.tiktok.com/@inferno.studioid" target="_blank"><img src="assets/tiktok.svg" alt="TikTok" /></a><a href="https://www.instagram.com/inferno.studios.id/" target="_blank"><img src="assets/instagram.svg" alt="Instagram" /></a><a href="https://www.youtube.com/@InfernoStudiosID" target="_blank"><img src="assets/youtube.svg" alt="YouTube" /></a><a href="https://discord.gg/cjd7h3x8mR" target="_blank"><img src="assets/discord.svg" alt="Discord" /></a></div></div><img src="assets/avatar.png" alt="Inferno Avatar" class="about-img" /></div></section>
 
