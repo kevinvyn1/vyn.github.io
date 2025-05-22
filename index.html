@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <style>
+    /* ===== COLOR PALETTE ===== */
     :root {
       --bg: #0a0004;
       --nav: #121212;
@@ -16,52 +17,245 @@
       --light: #f5f5f5;
       --max: 1200px;
     }
-    * {box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
-    body {background:var(--bg);color:var(--light);line-height:1.7;}
-    a {color:var(--light);text-decoration:none;transition:.3s;}
-    a:hover {color:var(--accent);}    
 
-    /* NAVBAR */
-    header {background:var(--nav);position:sticky;top:0;z-index:999;box-shadow:0 2px 4px rgba(0,0,0,.5);}    
-    nav {max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;}
-    .logo {display:flex;align-items:center;gap:.6rem;}
-    .logo img {width:42px;height:42px;border-radius:.25rem;object-fit:cover;}
-    .logo span {font-size:1.3rem;font-weight:800;letter-spacing:.5px;color:var(--light);}    
-    ul.nav-links {list-style:none;display:flex;gap:2rem;}
-    ul.nav-links li a {font-weight:500;}
+    /* ===== RESET & GLOBAL (copy‑protected) ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      -webkit-user-select: none; /* disable text selection */
+      user-select: none;
+      -webkit-touch-callout: none; /* disable iOS long‑press */
+    }
+    body {
+      background: var(--bg);
+      color: var(--light);
+      line-height: 1.7;
+    }
+    a {
+      color: var(--light);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    a:hover {
+      color: var(--accent);
+    }
 
-    /* HERO */
-    .hero {min-height:90vh;background:radial-gradient(circle at top right,#3b0014 0%,#0a0004 70%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-    .hero-content {max-width:var(--max);width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem;padding:2rem;}
-    .hero h1 {font-size:clamp(2.8rem,6vw,5rem);font-weight:800;letter-spacing:2px;margin-bottom:1rem;}
-    .sponsor {position:absolute;left:1.5rem;bottom:1.5rem;font-size:1.2rem;text-shadow:0 0 8px #fff;}
-    .hero-img {width:100%;max-width:360px;justify-self:end;}
+    /* ===== NAVBAR ===== */
+    header {
+      background: var(--nav);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    nav {
+      max-width: var(--max);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .logo img {
+      width: 42px;
+      height: 42px;
+      border-radius: 0.25rem;
+      object-fit: cover;
+      pointer-events: none; /* prevent drag */
+    }
+    .logo span {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    ul.nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    ul.nav-links li a {
+      font-weight: 500;
+    }
 
-    /* ABOUT */
-    section {max-width:var(--max);margin:4rem auto;padding:0 2rem;}
-    #about {display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem;}
-    #about h2 {font-size:3.2rem;font-weight:800;color:var(--light);margin-bottom:1rem;}
-    #about p {font-size:1rem;margin-bottom:1.5rem;}
-    .social {display:flex;gap:1rem;}
-    .social img {width:36px;filter:invert(100%);transition:.3s;}
-    .social img:hover {transform:translateY(-3px);}    
+    /* ===== SECTIONS SHARED ===== */
+    section {
+      width: 100%;
+      min-height: 100vh;
+      padding: 5rem 2rem;
+      display: flex;
+      align-items: center;
+    }
+    .inner {
+      width: 100%;
+      max-width: var(--max);
+      margin: auto;
+    }
 
-    /* PRODUCT */
-    #product h2 {font-size:2.4rem;color:var(--accent);margin-bottom:2rem;text-align:center;}
-    .product-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
-    .card {background:var(--card);border-radius:.75rem;overflow:hidden;box-shadow:0 8px 16px rgba(0,0,0,.5);display:flex;flex-direction:column;justify-content:space-between;}
-    .card img {width:100%;object-fit:cover;}
-    .card-title {background:var(--accent);text-align:center;padding:.6rem 0;font-weight:800;font-size:1.3rem;letter-spacing:1px;}
-    .card-desc {padding:1rem;text-align:center;font-size:.95rem;}
+    /* ===== HERO ===== */
+    #home {
+      background: radial-gradient(circle at top right, #3b0014 0%, #0a0004 70%);
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2rem;
+    }
+    .sponsor {
+      position: absolute;
+      left: 1.5rem;
+      bottom: 1.5rem;
+      font-size: 1.2rem;
+      text-shadow: 0 0 8px #fff;
+      pointer-events: none;
+    }
+    .hero-img {
+      width: 100%;
+      max-width: 360px;
+      justify-self: end;
+      pointer-events: none;
+    }
 
-    /* FOOTER */
-    footer {background:#000;text-align:center;padding:1.5rem;font-size:.85rem;color:#888;}
+    /* ===== ABOUT ===== */
+    #about {
+      background: #3b000b linear-gradient(135deg, #3b000b 0%, #0a0004 80%);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2rem;
+    }
+    .about-grid h2 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      align-items: center;
+    }
+    .social img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      filter: invert(100%);
+      transition: 0.3s;
+      display: block;
+      pointer-events: auto;
+    }
+    .social img:hover {
+      transform: translateY(-4px);
+    }
 
-    /* RESPONSIVE */
-    @media(max-width:768px){ul.nav-links{display:none;}.hero-content{grid-template-columns:1fr;text-align:center;}.hero-img{margin:0 auto;}#about{grid-template-columns:1fr;text-align:center;}}
+    /* ===== PRODUCT ===== */
+    #product {
+      background: #520000 linear-gradient(to bottom, #520000 0%, #0a0004 90%);
+      color: var(--light);
+      text-align: center;
+    }
+    #product h2 {
+      font-size: 2.6rem;
+      color: var(--accent);
+      margin-bottom: 3rem;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+    }
+    .card img {
+      width: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .card-title {
+      background: var(--accent);
+      padding: 0.7rem 0;
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: 1px;
+      pointer-events: none;
+    }
+    .card-desc {
+      padding: 1rem 1.25rem;
+      font-size: 0.95rem;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      color: #888;
+      pointer-events: none; /* avoid copy */
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-img {
+        margin: 0 auto;
+      }
+    }
+    @media (max-width: 768px) {
+      ul.nav-links {
+        display: none;
+      }
+      section {
+        padding: 4rem 1.5rem;
+      }
+    }
   </style>
+  <script>
+    /* ===== BASIC COPY & SAVE PREVENTION ===== */
+    document.addEventListener('contextmenu', e => e.preventDefault()); // Disable right‑click
+    ['copy', 'cut', 'paste', 'dragstart'].forEach(evt => {
+      document.addEventListener(evt, e => e.preventDefault());
+    });
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && ['s', 'u', 'p', 'c'].includes(e.key.toLowerCase())) {
+        e.preventDefault(); /* Block Ctrl+S/U/P/C */
+      }
+      if (e.key === 'PrintScreen') {
+        alert('Screenshot disabled ❌');
+        e.preventDefault();
+      }
+    });
+  </script>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
   <!-- ===== NAVBAR ===== -->
   <header>
     <nav>
@@ -78,10 +272,10 @@
   </header>
 
   <!-- ===== HERO ===== -->
-  <section id="home" class="hero">
-    <div class="hero-content">
+  <section id="home">
+    <div class="inner hero-grid">
       <div>
-        <img src="assets/inferno-text-logo.png" alt="Inferno Studios" style="max-width:420px;width:100%;" />
+        <img src="assets/inferno-text-logo.png" alt="Inferno Studios" style="max-width:420px;width:100%;pointer-events:none;" />
       </div>
       <img src="assets/avatar.png" alt="Inferno Avatar" class="hero-img" />
     </div>
@@ -90,42 +284,46 @@
 
   <!-- ===== ABOUT ===== -->
   <section id="about">
-    <div>
-      <h2>About :</h2>
-      <p>
-        Berfokus pada game Roblox bidang Roblox Studio, Inferno Studios
-        mengembangkan sistem terbaik dengan harga terjangkau sekaligus
-        memastikan performa optimal di perangkat mobile/tablet.
-      </p>
-      <div class="social">
-        <a href="https://www.tiktok.com/@inferno.studioid"><img src="assets/tiktok.svg" alt="TikTok" /></a>
-        <a href="https://www.instagram.com/inferno.studios.id/"><img src="assets/instagram.svg" alt="Instagram" /></a>
-        <a href="https://www.youtube.com/@InfernoStudiosID"><img src="assets/youtube.svg" alt="YouTube" /></a>
-        <a href="https://discord.gg/cjd7h3x8mR"><img src="assets/discord.svg" alt="Discord" /></a>
+    <div class="inner about-grid">
+      <div>
+        <h2>About :</h2>
+        <p>
+          Berfokus pada game Roblox bidang Roblox Studio, Inferno Studios
+          mengembangkan sistem terbaik dengan harga terjanggal sekaligus
+          memastikan performa optimal di perangkat mobile/tablet.
+        </p>
+        <div class="social">
+          <a href="https://www.tiktok.com/@inferno.studioid" target="_blank"><img src="assets/tiktok.svg" alt="TikTok" /></a>
+          <a href="https://www.instagram.com/inferno.studios.id/" target="_blank"><img src="assets/instagram.svg" alt="Instagram" /></a>
+          <a href="https://www.youtube.com/@InfernoStudiosID" target="_blank"><img src="assets/youtube.svg" alt="YouTube" /></a>
+          <a href="https://discord.gg/cjd7h3x8mR" target="_blank"><img src="assets/discord.svg" alt="Discord" /></a>
+        </div>
       </div>
+      <img src="assets/avatar.png" alt="Inferno Avatar" style="width:100%;max-width:400px;justify-self:end;" />
     </div>
-    <img src="assets/avatar.png" alt="Inferno Avatar" style="width:100%;max-width:380px;justify-self:end;" />
   </section>
 
   <!-- ===== PRODUCT ===== -->
   <section id="product">
-    <h2>Our Product</h2>
-    <div class="product-grid">
-      <article class="card">
-        <img src="assets/jjs.png" alt="JJS System" />
-        <div class="card-title">JJS SYSTEM</div>
-        <p class="card-desc">Animation hitung secara berurutan anti jump / walk / run</p>
-      </article>
-      <article class="card">
-        <img src="assets/hjs.png" alt="HJS System" />
-        <div class="card-title">HJS SYSTEM</div>
-        <p class="card-desc">Animation hitung secara berurutan anti jump / walk / run</p>
-      </article>
-      <article class="card">
-        <img src="assets/pullup.png" alt="Pull Up System" />
-        <div class="card-title">PULL UP SYSTEM</div>
-        <p class="card-desc">Animation pull-up counter lengkap dengan anti exploit</p>
-      </article>
+    <div class="inner">
+      <h2>Our Product</h2>
+      <div class="product-grid">
+        <article class="card">
+          <img src="assets/jjs.png" alt="JJS System" />
+          <div class="card-title">JJS SYSTEM</div>
+          <p class="card-desc">Animation hitung secara berurutan anti jump / walk / run</p>
+        </article>
+        <article class="card">
+          <img src="assets/hjs.png" alt="HJS System" />
+          <div class="card-title">HJS SYSTEM</div>
+          <p class="card-desc">Animation hitung secara berurutan anti jump / walk / run</p>
+        </article>
+        <article class="card">
+          <img src="assets/pullup.png" alt="Pull Up System" />
+          <div class="card-title">PULL UP SYSTEM</div>
+          <p class="card-desc">Animation pull-up counter lengkap dengan anti exploit</p>
+        </article>
+      </div>
     </div>
   </section>
 
