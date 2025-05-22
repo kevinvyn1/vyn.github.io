@@ -10,7 +10,7 @@
     :root {--bg:#0a0004;--nav:#121212;--card:#1b0202;--accent:#ff2727;--light:#f5f5f5;--max:1200px;}
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--light);line-height:1.7;}
-    a{color:var(--light);text-decoration:none;transition:.3s;}a:hover{color:var(--accent);}
+    a{color:var(--light);text-decoration:none;transition:.3s;}a:hover{color:var(--accent);}  
     header{background:var(--nav);position:sticky;top:0;z-index:999;box-shadow:0 2px 4px rgba(0,0,0,.5);} 
     nav{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;}
     .logo{display:flex;align-items:center;gap:.6rem;}
@@ -20,12 +20,14 @@
     section{width:100%;min-height:100vh;padding:5rem 2rem;display:flex;align-items:center;overflow:hidden;}
     .inner{width:100%;max-width:var(--max);margin:auto;}
 
-    /* HERO */
+    /* HOME */
     #home{background:var(--bg);text-align:center;justify-content:center;}
-    .headline{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;max-width:900px;margin:auto;line-height:1.5;text-shadow:0 0 8px var(--accent);}    
+    .home-logo{width:140px;height:auto;margin:0 auto 1.5rem auto;pointer-events:none;}
+    .headline{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;max-width:900px;margin:auto;line-height:1.5;}
+
     /* ABOUT */
     #about{background:#3b000b linear-gradient(135deg,#3b000b 0%,#0a0004 80%);}  
-    .about-grid{display:block;text-align:center;}
+    .about-grid{text-align:center;}
     .about-grid h2{font-size:2.8rem;font-weight:800;margin-bottom:1rem;}
     .social{display:flex;justify-content:center;gap:1rem;margin-top:1.5rem;align-items:center;}
     .social img{width:36px;height:36px;object-fit:contain;filter:invert(100%);transition:.3s;}
@@ -45,10 +47,10 @@
   <script>document.addEventListener('contextmenu',e=>e.preventDefault());['copy','cut','paste','dragstart'].forEach(evt=>document.addEventListener(evt,e=>e.preventDefault()));document.addEventListener('keydown',e=>{if(e.ctrlKey&&['s','u','p','c'].includes(e.key.toLowerCase()))e.preventDefault();if(e.key==='PrintScreen'){alert('Screenshot disabled ❌');e.preventDefault();}});</script>
 </head>
 <body>
-  <header><nav><div class="logo"><img src="assets/logo.png" alt="Inferno logo" /><span>Inferno</span></div><ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#product">Product</a></li></ul></nav></header>
+  <header><nav><div class="logo"><img src="assets/logo.png" alt="Inferno logo" /><span>Inferno Studios</span></div><ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#product">Product</a></li></ul></nav></header>
 
   <!-- HOME -->
-  <section id="home"><div class="inner"><p class="headline">Inferno Studios ID ©Hallo Pemain Roblox, kami adalah toko yang berasal dari indonesia yang menjual berbagai asset script roblox studio dan juga jasa script dari yang basic hingga tingkat menengah.</p></div></section>
+  <section id="home"><div class="inner"><img src="assets/logo.png" alt="Inferno Logo" class="home-logo" /><p class="headline">Inferno Studios ID ©Hallo Pemain Roblox, kami adalah toko yang berasal dari indonesia yang menjual berbagai asset script roblox studio dan juga jasa script dari yang basic hingga tingkat menengah.</p></div></section>
 
   <!-- ABOUT -->
   <section id="about"><div class="inner about-grid"><h2>About :</h2><p>Berfokus pada game Roblox bidang Roblox Studio, Inferno Studios mengembangkan sistem terbaik dengan harga terjangkau sekaligus memastikan performa optimal di perangkat mobile/tablet.</p><div class="social"><a href="https://www.tiktok.com/@inferno.studioid" target="_blank"><img src="assets/tiktok.svg" alt="TikTok" /></a><a href="https://www.instagram.com/inferno.studios.id/" target="_blank"><img src="assets/instagram.svg" alt="Instagram" /></a><a href="https://www.youtube.com/@InfernoStudiosID" target="_blank"><img src="assets/youtube.svg" alt="YouTube" /></a><a href="https://discord.gg/cjd7h3x8mR" target="_blank"><img src="assets/discord.svg" alt="Discord" /></a></div></div></section>
