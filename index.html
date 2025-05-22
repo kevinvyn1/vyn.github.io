@@ -1,153 +1,195 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kevin S.A – Portfolio 2024-2025</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inferno Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #111;        /* latar belakang utama */
-      --card: #1b1b1b;   /* warna kartu / blok */
-      --accent: #ff4e55; /* aksen merah muda */
-      --text: #f5f5f5;   /* teks utama */
-      --max: 1100px;     /* lebar konten */
+      --bg: #0a0004;           /* background utama */
+      --nav: #121212;          /* warna navbar */
+      --card: #1b0202;         /* kartu */
+      --accent: #ff2727;       /* aksen merah */
+      --light: #f5f5f5;        /* teks terang */
+      --max: 1200px;           /* lebar konten */
     }
-    * {box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
-    body {background:var(--bg);color:var(--text);line-height:1.7;}
-    a {color:var(--accent);text-decoration:none;}
-    h1,h2,h3 {font-weight:800;line-height:1.2;margin-bottom:.4em;}
-    h2 {color:var(--accent);}
-    p,li {font-size:0.95rem;}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background: var(--bg);
+      color: var(--light);
+      line-height: 1.7;
+    }
+    a {color: var(--light);text-decoration: none;transition: .3s;}
+    a:hover {color: var(--accent);}
 
-    /* NAV */
-    header {background:#000;position:sticky;top:0;z-index:999;box-shadow:0 2px 4px rgba(0,0,0,.4);}    
-    nav {max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;}
-    .brand {font-size:1.3rem;font-weight:800;color:var(--accent);}    
-    ul.nav-links {display:flex;gap:1.3rem;list-style:none;}
-    ul.nav-links a {color:var(--text);transition:.3s;}
-    ul.nav-links a:hover {color:var(--accent);}    
+    /* NAVBAR */
+    header {
+      background: var(--nav);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    }
+    nav {
+      max-width: var(--max);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .logo img {width: 42px; height: 42px; object-fit: cover; border-radius: .25rem;}
+    .logo span {font-size: 1.3rem; font-weight: 800; letter-spacing: .5px; color: var(--light);}    
+    ul.nav-links {list-style: none; display: flex; gap: 2rem;}
+    ul.nav-links li a {font-weight: 500;}
 
-    /* CONTAINER */
-    main {max-width:var(--max);margin:auto;padding:3rem 2rem;}
-    section {margin-bottom:3.5rem;}
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      background: radial-gradient(circle at top right,#3b0014 0%, #0a0004 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      max-width: var(--max);
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .sponsor {position: absolute; left: 1.5rem; bottom: 1.5rem; font-size: 1.2rem; text-shadow: 0 0 8px #fff;}
+    .hero-img {width: 100%; max-width: 360px; justify-self: end;}
 
-    /* CARD */
-    .card {background:var(--card);border-radius:.75rem;padding:1.5rem;margin-top:1rem;box-shadow:0 4px 8px rgba(0,0,0,.3);}    
-    .list-col {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;}    
+    /* ABOUT */
+    section {max-width: var(--max); margin: 4rem auto; padding: 0 2rem;}
+    #about {display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem;}
+    #about h2 {font-size: 3.2rem; font-weight: 800; color: var(--light); margin-bottom: 1rem;}
+    #about p {font-size: 1rem; margin-bottom: 1.5rem;}
+    .social {display: flex; gap: 1rem;}
+    .social img {width: 36px; filter: invert(100%); transition: .3s;}
+    .social img:hover {transform: translateY(-3px);}    
 
-    /* SKILL GRID */
-    .skill-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem;}
-    .skill-card {background:var(--card);padding:1rem;border-radius:.6rem;}
-
-    /* PORTO MAP */
-    .project-list li {margin-bottom:.6rem;word-break:break-all;}
+    /* PRODUCT */
+    #product h2 {font-size: 2.4rem; color: var(--accent); margin-bottom: 2rem; text-align:center;}
+    .product-grid {display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem;}
+    .card {
+      background: var(--card);
+      border-radius: .75rem;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,.5);
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .card img {width: 100%; object-fit: cover;}
+    .card-title {background: var(--accent); text-align: center; padding:.6rem 0; font-weight: 800; font-size:1.3rem; letter-spacing:1px;}
+    .card-desc {padding: 1rem; text-align:center; font-size:.95rem;}
 
     /* FOOTER */
-    footer {background:#000;text-align:center;padding:1.3rem;color:#888;font-size:.85rem;}
+    footer {background: #000; text-align:center; padding:1.5rem; font-size:.85rem; color:#888;}
 
-    @media(max-width:768px){ul.nav-links{display:none;}}
+    /* RESPONSIVE */
+    @media(max-width: 768px) {
+      ul.nav-links {display: none;}
+      .hero-content {grid-template-columns: 1fr; text-align: center;}
+      .hero-img {margin: 0 auto;}
+      #about {grid-template-columns: 1fr; text-align:center;}
+    }
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
+  <!-- ===== NAVBAR ===== -->
   <header>
     <nav>
-      <div class="brand">Kevin S.A</div>
+      <div class="logo">
+        <img src="assets/logo.png" alt="Inferno logo" />
+        <span>Inferno</span>
+      </div>
       <ul class="nav-links">
-        <li><a href="#porto">Porto</a></li>
-        <li><a href="#skills">Skill</a></li>
-        <li><a href="#projects">Porto Map</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#product">Product</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <!-- PORTO SECTION -->
-    <section id="porto">
-      <h2># PORTO <span style="font-weight:400">(Periode&nbsp;2024&nbsp;–&nbsp;2025)</span></h2>
-      <div class="card list-col">
-        <!-- Developer Roblox Column -->
-        <div>
-          <h3>Developer Roblox</h3>
-          <ul>
-            <li>Instructor Series Developer&nbsp;2024 (SH)</li>
-            <li>Instructor Series Scripter Learning&nbsp;2024 (SH)</li>
-            <li>Developer Pusat Pendidikan Brigade Mobile (CJ)</li>
-            <li>Developer Utama (PKR)</li>
-            <li>Scripter Utama (BALI PROJECT)</li>
-            <li>Team Developer (GLORIOUS DRIVING INDONESIA&nbsp;~&nbsp;GD)</li>
-          </ul>
-        </div>
-        <!-- Tester Column -->
-        <div>
-          <h3>Tester Roblox</h3>
-          <ul>
-            <li>Tester ER:LC RolePlay (HYPE)</li>
-            <li>Tester Roleplay Kepolisian (CJ)</li>
-            <li>Tester Map Milsim (Sud-CJ)</li>
-            <li>Tester Instansi TNI RP Roblox (AKABRI)</li>
-          </ul>
-        </div>
-        <!-- Admin Column -->
-        <div>
-          <h3>Administrator Discord / Roblox</h3>
-          <ul>
-            <li>Admin Roleplay Roblox (Polda Jawa Tengah, HYPE, AKABRI, GLORIOUS DRIVING INDONESIA, Polda Kepulauan Riau)</li>
-            <li>OwnerShip (NCT CITY ER:LC, Sheesh Community, Risen Realm Studios)</li>
-            <li>Collaboration (GFM FAMILIA)</li>
-          </ul>
-        </div>
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div>
+        <img src="assets/inferno-text-logo.png" alt="Inferno Studios" style="max-width:420px;width:100%;" />
       </div>
-    </section>
+      <img src="assets/avatar.png" alt="Inferno Avatar" class="hero-img" />
+    </div>
+    <span class="sponsor">Sponsor by vyn</span>
+  </section>
 
-    <!-- SKILL SECTION -->
-    <section id="skills">
-      <h2># SKILL</h2>
-      <div class="skill-grid">
-        <div class="skill-card">
-          <h3>Development Roblox</h3>
-          <ul>
-            <li>UI Design (Basic)</li>
-            <li>Scripting (Basic → Advanced)</li>
-            <li>Building (Basic)</li>
-            <li>DataStore (Basic)</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h3>Keterampilan Lain</h3>
-          <ul>
-            <li>Bisa Memimpin Secara Adil dan Setara</li>
-            <li>Bisa Bekerja dalam Tim</li>
-            <li>Bisa Bekerja di Bawah Tekanan</li>
-            <li>Bertanggung Jawab atas Pelanggaran Aturan</li>
-            <li>Non-Anti Kritik &amp; Terbuka pada Pendapat</li>
-          </ul>
-        </div>
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div>
+      <h2>About :</h2>
+      <p>
+        Berfokus pada game Roblox bidang Roblox Studio, Inferno Studios
+        mengembangkan sistem terbaik dengan harga terjangkau sekaligus
+        memastikan performa optimal di perangkat mobile/tablet.
+      </p>
+      <div class="social">
+        <a href="#"><img src="assets/tiktok.svg" alt="TikTok" /></a>
+        <a href="#"><img src="assets/instagram.svg" alt="Instagram" /></a>
+        <a href="#"><img src="assets/youtube.svg" alt="YouTube" /></a>
       </div>
-    </section>
+    </div>
+    <img src="assets/avatar.png" alt="Inferno Avatar" style="width:100%;max-width:380px;justify-self:end;" />
+  </section>
 
-    <!-- PORTO MAP SECTION -->
-    <section id="projects">
-      <h2>Porto Map</h2>
-      <div class="card">
-        <ul class="project-list">
-          <li><a href="https://www.roblox.com/games/18406132003/Script-Testing" target="_blank">Scripting Test</a></li>
-          <li><a href="https://www.roblox.com/games/137026580823414/Pusat-Pelatihan-Brigade-Mobile-General" target="_blank">Pusat Pendidikan Brigade Mobile v.1</a></li>
-          <li><a href="https://www.roblox.com/games/15926584591/CJ-BRIMOB-EDUCATION-CENTER-2-0" target="_blank">Pusat Pendidikan Brigade Mobile v.2</a></li>
-          <li><a href="https://www.roblox.com/games/17577856362/Hutan-Rawa-Papua-Barat" target="_blank">Hutan Rawa Papua Barat</a></li>
-          <li><a href="https://www.roblox.com/games/140640209184255/PMJ-SPN-Polda-Metro-Jaya#!/about" target="_blank">PMJ SPN Polda Metro Jaya</a></li>
-          <li><a href="https://www.roblox.com/games/138852063187162/PAIC-MAPOLDA-JAKARTA-RAYA" target="_blank">PAIC Mapolda Jakarta Raya</a></li>
-        </ul>
-      </div>
-    </section>
-  </main>
+  <!-- ===== PRODUCT ===== -->
+  <section id="product">
+    <h2>Our Product</h2>
+    <div class="product-grid">
+      <article class="card">
+        <img src="assets/jjs.png" alt="JJS System" />
+        <div class="card-title">JJS SYSTEM</div>
+        <p class="card-desc">Animation hitung secara berurutan anti jump / walk / run</p>
+      </article>
+      <article class="card">
+        <img src="assets/hjs.png" alt="HJS System" />
+        <div class="card-title">HJS SYSTEM</div>
+        <p class="card-desc">Animation hitung secara berurutan anti jump / walk / run</p>
+      </article>
+      <article class="card">
+        <img src="assets/pullup.png" alt="Pull Up System" />
+        <div class="card-title">PULL UP SYSTEM</div>
+        <p class="card-desc">Animation pull-up counter lengkap dengan anti exploit</p>
+      </article>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
+  <!-- ===== FOOTER ===== -->
   <footer>
-    © 2025 Kevin S.A – Portofolio Online
+    © 2025 Inferno Studios – All rights reserved
   </footer>
 </body>
 </html>
