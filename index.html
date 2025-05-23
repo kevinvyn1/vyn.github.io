@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inferno Studios</title>
 
-  <!-- favicon -->
+  <!-- favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png" />
 
-  <!-- font -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
   <style>
@@ -17,12 +17,13 @@
       --accent:#ff2727;--light:#f5f5f5;--max:1200px;
     }
 
-    /* RESET + GLOBAL */
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;user-select:none;-webkit-touch-callout:none;scroll-behavior:smooth;}
+    /* RESET & GLOBAL */
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;
+      user-select:none;-webkit-touch-callout:none;scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--light);line-height:1.7;}
     a{color:inherit;text-decoration:none;}
 
-    /* NAVBAR */
+    /* NAVBAR */
     header{background:var(--nav);position:sticky;top:0;z-index:998;box-shadow:0 2px 4px rgba(0,0,0,.5);}
     nav{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;}
     .logo{display:flex;align-items:center;gap:.6rem;}
@@ -31,29 +32,29 @@
     ul.nav-links{list-style:none;display:flex;gap:2rem;}
     ul.nav-links a{font-weight:500;}
 
-    /* SECTION */
+    /* SECTIONS */
     section{width:100%;min-height:100vh;padding:5rem 2rem;display:flex;align-items:center;justify-content:center;}
     .inner{width:100%;max-width:var(--max);margin:auto;}
 
-    /* HOME */
-    #home{background:var(--bg);text-align:center;}
+    /* HOME */
+    #home{text-align:center;background:var(--bg);}
     .home-logo{width:140px;margin:0 auto 1.5rem;}
     .headline{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;max-width:900px;margin:auto;line-height:1.5;}
 
-    /* ABOUT */
+    /* ABOUT */
     #about{background:#3b000b linear-gradient(135deg,#3b000b 0%,#0a0004 80%);text-align:center;}
     .social{display:flex;justify-content:center;gap:1rem;margin-top:1.5rem;}
     .social img{width:36px;filter:invert(100%);transition:.3s;}
     .social img:hover{transform:translateY(-4px);}
 
-    /* PRODUCT CAROUSEL */
-    #product{background:#520000 linear-gradient(to bottom,#520000 0%,#0a0004 90%);color:var(--light);text-align:center;}
+    /* PRODUCT CAROUSEL */
+    #product{background:#520000 linear-gradient(to bottom,#520000 0%,#0a0004 90%);text-align:center;}
     #product h2{font-size:2.6rem;color:var(--accent);margin-bottom:2rem;}
 
-    .carousel-wrapper{position:relative;overflow:hidden;max-width:100%;}
+    .carousel-wrapper{position:relative;overflow:hidden;}
     .carousel-track{
-      display:flex;gap:2rem;padding-bottom:1rem;
-      overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+      display:flex;gap:2rem;overflow-x:auto;padding-bottom:1rem;
+      scroll-behavior:smooth;scroll-snap-type:x mandatory;
     }
     .carousel-track::-webkit-scrollbar{display:none;}
 
@@ -65,63 +66,79 @@
     .card:hover{transform:translateY(-6px);}
     .card img{width:100%;height:180px;object-fit:cover;}
     .card-title{background:var(--accent);padding:.7rem 0;font-weight:800;letter-spacing:1px;}
-    .card-desc{padding:1rem;font-size:.95rem;min-height:88px;display:flex;align-items:center;justify-content:center;text-align:center;}
+    .card-desc{padding:1rem;font-size:.9rem;min-height:90px;display:flex;align-items:center;justify-content:center;text-align:center;}
 
     .arrow{
       position:absolute;top:50%;transform:translateY(-50%);
-      width:48px;height:48px;font-size:2rem;border:none;border-radius:50%;
-      background:rgba(0,0,0,.6);color:var(--light);cursor:pointer;z-index:999;
-      display:flex;align-items:center;justify-content:center;transition:.3s;
+      width:48px;height:48px;border:none;border-radius:50%;
+      font-size:2rem;display:flex;align-items:center;justify-content:center;
+      background:rgba(0,0,0,.6);color:var(--light);cursor:pointer;z-index:999;transition:.3s;
     }
     .arrow:hover{background:var(--accent);}
-    .arrow.left{left:0;}
-    .arrow.right{right:0;}
+    .arrow.left{left:0;} .arrow.right{right:0;}
+
+    /* REVIEWS */
+    #reviews{background:var(--bg);text-align:center;}
+    #reviews h2{font-size:2.4rem;color:var(--accent);margin-bottom:2rem;}
+    .review-grid{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;}
+    .review-card{
+      background:var(--card);width:320px;border-radius:.75rem;
+      box-shadow:0 6px 14px rgba(0,0,0,.5);padding:1.5rem;
+      display:flex;flex-direction:column;gap:1rem;
+    }
+    .review-header{display:flex;align-items:center;gap:.75rem;}
+    .review-header img{width:42px;height:42px;border-radius:50%;object-fit:cover;}
+    .review-name{font-weight:600;font-size:1.1rem;}
+    .review-text{font-size:.95rem;line-height:1.5;text-align:left;}
+    .review-stars{color:gold;font-size:1.1rem;text-align:left;}
 
     footer{background:#000;text-align:center;padding:1.5rem;font-size:.85rem;color:#888;}
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAV -->
   <header>
     <nav>
-      <div class="logo"><img src="assets/logo.png" alt="Inferno Studios"/><span>Inferno Studios</span></div>
+      <div class="logo"><img src="assets/logo.png" alt="Inferno Studios"><span>Inferno Studios</span></div>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#product">Product</a></li>
+        <li><a href="#reviews">Review</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- HOME -->
+  <!-- HOME -->
   <section id="home">
     <div class="inner">
-      <img src="assets/logo.png" alt="logo" class="home-logo"/>
+      <img src="assets/logo.png" alt="logo" class="home-logo">
       <p class="headline">
-        Inferno Studios ID © Hallo Pemain Roblox, kami adalah toko yang berasal dari Indonesia
-        yang menjual berbagai asset script Roblox Studio dan juga jasa script
+        Inferno Studios ID © Hallo Pemain Roblox, kami adalah toko asal Indonesia
+        yang menjual berbagai asset script Roblox Studio serta jasa scripting
         dari level basic hingga menengah.
       </p>
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="inner">
       <h2>About :</h2>
-      <p>Berfokus pada game Roblox bidang Roblox Studio, Inferno Studios mengembangkan sistem terbaik dengan harga terjangkau sekaligus memastikan performa optimal di perangkat mobile/tablet.</p>
+      <p>Berfokus pada game Roblox bidang Roblox Studio, Inferno Studios mengembangkan sistem
+        terbaik dengan harga terjangkau sekaligus memastikan performa optimal di perangkat mobile/tablet.</p>
 
       <div class="social">
-        <a href="https://www.tiktok.com/@inferno.studioid" target="_blank"><img src="assets/tiktok.svg" alt="TikTok"/></a>
-        <a href="https://www.instagram.com/inferno.studios.id/" target="_blank"><img src="assets/instagram.svg" alt="Instagram"/></a>
-        <a href="https://www.youtube.com/@InfernoStudiosID" target="_blank"><img src="assets/youtube.svg" alt="YouTube"/></a>
-        <a href="https://discord.gg/cjd7h3x8mR" target="_blank"><img src="assets/discord.svg" alt="Discord"/></a>
+        <a href="https://www.tiktok.com/@inferno.studioid" target="_blank"><img src="assets/tiktok.svg" alt="TikTok"></a>
+        <a href="https://www.instagram.com/inferno.studios.id/" target="_blank"><img src="assets/instagram.svg" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@InfernoStudiosID" target="_blank"><img src="assets/youtube.svg" alt="YouTube"></a>
+        <a href="https://discord.gg/cjd7h3x8mR" target="_blank"><img src="assets/discord.svg" alt="Discord"></a>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCT -->
+  <!-- PRODUCT -->
   <section id="product">
     <div class="inner">
       <h2>Our Product</h2>
@@ -130,17 +147,17 @@
         <button class="arrow left" aria-label="prev">&#8249;</button>
 
         <div class="carousel-track" id="track">
-          <!-- kartu bisa di-link nanti (ganti #) -->
-          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/jjs.png" alt="JJS"/><div class="card-title">JJS SYSTEM</div><p class="card-desc">✅Animation✅Hitung Berurutan✅Anti Jump/Walk/Run</p></a>
-          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/hjs.png" alt="HJS"/><div class="card-title">HJS SYSTEM</div><p class="card-desc">✅Animation✅Hitung Berurutan✅Anti Jump/Walk/Run</p></a>
-          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/pullup.png" alt="Pull-Up"/><div class="card-title">PULL UP SYSTEM</div><p class="card-desc">✅Animation✅Hitung Berurutan✅Anti Jump/Walk/Run</p></a>
+          <!-- ganti href="#" ke URL asli nanti -->
+          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/jjs.png" alt="JJS"><div class="card-title">JJS SYSTEM</div><p class="card-desc">✅Animation✅Hitung Berurutan✅Anti Jump/Walk/Run</p></a>
+          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/hjs.png" alt="HJS"><div class="card-title">HJS SYSTEM</div><p class="card-desc">✅Animation✅Hitung Berurutan✅Anti Jump/Walk/Run</p></a>
+          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/pullup.png" alt="Pull-Up"><div class="card-title">PULL UP SYSTEM</div><p class="card-desc">✅Animation✅Hitung Berurutan✅Anti Jump/Walk/Run</p></a>
 
-          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/locker.png" alt="Locker"/><div class="card-title">Locker System</div><p class="card-desc">✅TeamOnlyShirt✅ProximityPrompt✅Simple Setup UI</p></a>
-          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/phone.png" alt="Phone UI"/><div class="card-title">Phone UI Kit</div><p class="card-desc">✅Animated✅Mobile/PC✅App Utama✅Mudah di-setup</p></a>
-          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/rules.png" alt="Rules"/><div class="card-title">Rules GUI</div><p class="card-desc">✅Sound✅Animation✅Blur✅Fix Major Bug</p></a>
-          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/loading.png" alt="Loading"/><div class="card-title">Loading Screen</div><p class="card-desc">✅Skip Button✅Progress Bar✅Fix Bug</p></a>
-          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/pushup.png" alt="Push-Up"/><div class="card-title">Push-Up System</div><p class="card-desc">✅Animation✅Berurutan✅Anti Jump/Walk/Run</p></a>
-          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/situp.png" alt="Sit-Up"/><div class="card-title">Sit-Up System</div><p class="card-desc">✅Animation✅Berurutan✅Anti Jump/Walk/Run</p></a>
+          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/locker.png" alt="Locker"><div class="card-title">Locker System</div><p class="card-desc">✅TeamOnlyShirt✅ProximityPrompt✅Simple Setup UI</p></a>
+          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/phone.png" alt="Phone UI"><div class="card-title">Phone UI Kit</div><p class="card-desc">✅Animated✅Mobile/PC✅App Utama✅Setup Mudah</p></a>
+          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/rules.png" alt="Rules GUI"><div class="card-title">Rules GUI</div><p class="card-desc">✅Sound✅Animation✅Blur✅Fix Bug</p></a>
+          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/loading.png" alt="Loading"><div class="card-title">Loading Screen</div><p class="card-desc">✅Skip Button✅Progress Bar✅Fix Bug</p></a>
+          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/pushup.png" alt="Push-Up"><div class="card-title">Push-Up System</div><p class="card-desc">✅Animation✅Berurutan✅Anti Jump/Walk/Run</p></a>
+          <a href="https://discord.gg/cjd7h3x8mR" class="card"><img src="assets/situp.png" alt="Sit-Up"><div class="card-title">Sit-Up System</div><p class="card-desc">✅Animation✅Berurutan✅Anti Jump/Walk/Run</p></a>
         </div>
 
         <button class="arrow right" aria-label="next">&#8250;</button>
@@ -148,14 +165,94 @@
     </div>
   </section>
 
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="inner">
+      <h2>Customer Reviews</h2>
+
+      <div class="review-grid">
+        <!-- 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="assets/bioopppo.png" alt="bioopppo">
+            <span class="review-name">bioopppo</span>
+          </div>
+          <p class="review-text">Adminnya ramah-ramah cik</p>
+          <div class="review-stars">★★★★★</div>
+        </div>
+
+        <!-- 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="assets/ditzz28.png" alt="Ditzz28">
+            <span class="review-name">Ditzz28</span>
+          </div>
+          <p class="review-text">Mantap System Push-Up-nya!</p>
+          <div class="review-stars">★★★★★</div>
+        </div>
+
+        <!-- 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="assets/Sunday0870.png" alt="Sunday0870">
+            <span class="review-name">Sunday0870</span>
+          </div>
+          <p class="review-text">Mantap lagi butuh script push-up juga, kalo ada sit-up mau juga.</p>
+          <div class="review-stars">★★★★★</div>
+        </div>
+
+        <!-- 4 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="assets/AlzainGamink554.png" alt="AlzainGamink554">
+            <span class="review-name">AlzainGamink554</span>
+          </div>
+          <p class="review-text">Unlimited bintang buat storenya ⭐</p>
+          <div class="review-stars">★★★★★</div>
+        </div>
+
+        <!-- 5 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="assets/timgaruda14.png" alt="TIMGARUDA14">
+            <span class="review-name">TIMGARUDA14</span>
+          </div>
+          <p class="review-text">Keren System Push-Up dan Sit-Up-nya.</p>
+          <div class="review-stars">★★★★★</div>
+        </div>
+
+        <!-- 6 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="assets/Zultannnnnnnnnn_99.png" alt="Zultannnnnnnnnn_99">
+            <span class="review-name">Zultannnnnnnnnn_99</span>
+          </div>
+          <p class="review-text">Admin fast respon, keren untuk storenya.</p>
+          <div class="review-stars">★★★★★</div>
+        </div>
+
+        <!-- 7 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="assets/felixc65.png" alt="Felixc65">
+            <span class="review-name">Felixc65</span>
+          </div>
+          <p class="review-text">Radio sama Push-Up-nya mantap brok!</p>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>© 2025 Inferno Studios – All rights reserved</footer>
 
+  <!-- JS panah carousel -->
   <script>
-    const track = document.getElementById('track');
+    const track=document.getElementById('track');
     document.querySelector('.arrow.left')
-            .addEventListener('click', () => track.scrollBy({left:-320,behavior:'smooth'}));
+            .addEventListener('click',()=>track.scrollBy({left:-320,behavior:'smooth'}));
     document.querySelector('.arrow.right')
-            .addEventListener('click', () => track.scrollBy({left: 320,behavior:'smooth'}));
+            .addEventListener('click',()=>track.scrollBy({left:320,behavior:'smooth'}));
   </script>
 </body>
 </html>
