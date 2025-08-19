@@ -4,3 +4,78 @@ nav a {color:#fff; margin:0 .5rem; text-decoration:none;}
 section {padding:2rem; max-width:760px; margin:auto;}
 h1,h2 {margin:.2em 0;}
 footer {text-align:center; padding:1rem; background:#eee;}
+/* === STATUS TAB + PANEL === */
+.status-tab{
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  transform: translateX(-35%) rotate(-90deg);
+  transform-origin: left top;
+  display: inline-block;
+  padding: .45rem .75rem;
+  font: 600 14px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: #111;
+  color: #fff;
+  border-radius: .5rem .5rem 0 0;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+  letter-spacing: .4px;
+  text-decoration: none;
+  z-index: 1000;
+}
+.status-tab:focus{ outline: 2px solid #00d1b2; outline-offset: 2px; }
+
+.status-panel{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+  z-index: 1001;
+}
+.status-panel:target{ opacity: 1; pointer-events: auto; }
+
+.status-card{
+  width: min(520px, 92vw);
+  margin: 10vh auto 0;
+  background: #fff;
+  color: #111;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  padding: 20px 22px;
+  position: relative;
+}
+
+.status-close{
+  position: absolute;
+  top: 10px; right: 12px;
+  color: #667;
+  text-decoration: none;
+  font-size: 20px; line-height: 1;
+}
+.status-close:focus{ outline: 2px solid #00d1b2; outline-offset: 2px; }
+
+.status-list{
+  list-style: none;
+  padding: 0; margin: 10px 0 0;
+  display: grid; gap: 10px;
+}
+.status-list .dot{
+  display: inline-block; width: 10px; height: 10px;
+  border-radius: 50%; margin-right: 6px; vertical-align: baseline;
+}
+.dot.ok{ background: #22c55e; }
+.dot.warn{ background: #f59e0b; }
+.dot.down{ background: #ef4444; }
+
+.status-note{ margin-top: 12px; font-size: 13px; color: #667; }
+
+/* Mobile: biar nggak miring, jadi chip biasa */
+@media (max-width: 640px){
+  .status-tab{
+    transform: none;
+    left: .75rem;
+    border-radius: .75rem;
+  }
+}
+/* === /STATUS TAB + PANEL === */

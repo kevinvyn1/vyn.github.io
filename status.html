@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Status — Situs</title>
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root{
+      --bg:#0b0d10; --surface:#101317; --edge:#1b1f24;
+      --text:#e6e9ef; --muted:#a4acb9; --accent:#f59e0b;
+      --ok:#22c55e; --warn:#f59e0b; --down:#ef4444;
+      --radius:16px; --shadow:0 10px 32px rgba(0,0,0,.38);
+      --mxw:1120px;
+      --pad:clamp(18px,3.2vw,32px);
+      --gap:clamp(18px,3vw,28px);
+      --border:1px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",Arial,"Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.6;background:var(--bg);color:var(--text);
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+    .container{
+      width:100%;max-width:var(--mxw);margin-inline:auto;
+      padding: min(6vh,64px) var(--pad) 18vh; /* padding bawah dipanjangin */
+    }
+
+    .status-back{
+      display:inline-flex;align-items:center;gap:.5rem;
+      color:var(--muted);
+      border:var(--border) solid var(--edge);
+      background:linear-gradient(180deg,#0e1116,#0b0e12);
+      padding:.6rem .9rem;border-radius:999px;
+      transition:transform .2s ease,border-color .2s ease,color .2s ease;
+    }
+    .status-back:hover{transform:translateX(-2px);color:var(--text);border-color:#242a31}
+
+    .status-title{font-size:clamp(24px,3.8vw,36px);line-height:1.2;margin:20px 0 6px;letter-spacing:.2px}
+    .status-badge{
+      display:inline-flex;align-items:center;gap:.5ch;
+      font-size:.65em;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+      padding:.45rem .72rem;border-radius:10px;color:#0a0a0a;
+      background:linear-gradient(180deg,#ffd166,#f59e0b);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 18px rgba(245,158,11,.25);
+      vertical-align:middle;
+    }
+    .status-badge::before{
+      content:'';width:.66em;height:.66em;border-radius:50%;background:var(--ok);
+      box-shadow:0 0 0 3px rgba(34,197,94,.18);
+    }
+
+    .status-updated{margin:8px 0 28px;color:var(--muted);font-size:.98rem}
+    .status-updated time{color:var(--text)}
+
+    /* ===== GRID & CARD – diperbesar + jarak kebawah dipanjangin ===== */
+    .status-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* kartu lebih lebar */
+      column-gap: var(--gap);
+      row-gap: clamp(28px, 5vw, 56px); /* jarak vertikal lebih panjang */
+      align-items: stretch;
+    }
+    .status-card{
+      background:linear-gradient(180deg,#0f1318,#0c0f13);
+      border:var(--border) solid var(--edge);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding: 26px 24px;                 /* padding dibesarkan */
+      min-height: clamp(150px, 28vh, 260px); /* tinggi minimum kartu diperbesar */
+      position:relative;overflow:hidden;
+      transition:border-color .2s ease,transform .2s ease;
+    }
+    .status-card:hover{border-color:#242a31;transform:translateY(-2px)}
+    .status-card h3{margin:2px 0 10px;font-size:clamp(16px,2.2vw,19px);letter-spacing:.3px}
+    .status-card p{margin:0;color:var(--muted);font-size:1rem}
+
+    .dot{display:inline-block;width:.8em;height:.8em;border-radius:50%;margin-right:.55em;vertical-align:-.12em;position:relative}
+    .dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.down{background:var(--down)}
+    .dot.ok::after,.dot.warn::after,.dot.down::after{
+      content:'';position:absolute;inset:-6px;border-radius:inherit;animation:pulse 1.6s ease-out infinite
+    }
+    .dot.ok::after{box-shadow:0 0 0 0 rgba(34,197,94,.35)}
+    .dot.warn::after{box-shadow:0 0 0 0 rgba(245,158,11,.35)}
+    .dot.down::after{box-shadow:0 0 0 0 rgba(239,68,68,.35)}
+    @keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+
+    @media (prefers-color-scheme: light){
+      :root{--bg:#f6f7f9;--surface:#fff;--edge:#e7eaf0;--text:#121317;--muted:#5d6675}
+      .status-back{background:#fff}
+      .status-card{background:#fff}
+      .status-badge{color:#0a0a0a}
+    }
+  </style>
+</head>
+<body class="status">
+  <main class="container">
+    <a class="status-back" href="index.html">← Kembali ke Beranda</a>
+
+    <h1 class="status-title">
+      Status Layanan <span class="status-badge">Online</span>
+    </h1>
+    <p class="status-updated">Terakhir diperbarui: <time id="updated">—</time></p>
+
+    <section class="status-grid">
+      <article class="status-card">
+        <h3>Operasional</h3>
+        <p><span class="dot ok"></span> Semua sistem normal.</p>
+      </article>
+
+      <article class="status-card">
+        <h3>Jasa Scripting / Jasa UI Design</h3>
+        <p><span class="dot warn"></span> Terbuka untuk slot terbatas.</p>
+      </article>
+
+      <article class="status-card">
+        <h3>Order Queue</h3>
+        <p><span class="dot ok"></span>Antrean rendah.</p>
+      </article>
+
+      <article class="status-card">
+        <h3>Response Time</h3>
+        <p><span class="dot warn"></span>kurang dari 3 jam pada jam kerja.</p>
+      </article>
+
+      <article class="status-card">
+        <h3>Whitelist</h3>
+        <p><span class="dot ok"></span>Aktif &amp; manual.</p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      var el=document.getElementById('updated'); if(!el) return;
+      try{
+        el.textContent=new Intl.DateTimeFormat('id-ID',{
+          timeZone:'Asia/Jakarta',hour12:false,year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'
+        }).format(new Date());
+      }catch(e){ el.textContent=new Date().toLocaleString('id-ID'); }
+    })();
+  </script>
+</body>
+</html>
